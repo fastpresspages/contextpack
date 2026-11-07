@@ -1,6 +1,6 @@
-# Fix plan for 127.0.0.1:8125
+# Fix plan for fastpresspages.github.io
 
-Current grade: **A+ (99/100)**. Target: **A (90+)**.
+Current grade: **A+ (100/100)**. Target: **A (90+)**.
 
 Work top to bottom. Re-run `launchgrade` after each batch and keep the report in the repo so the grade is visible.
 

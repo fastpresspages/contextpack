@@ -2,22 +2,22 @@
   "$schema": "https://raw.githubusercontent.com/fastpresspages/launchgrade/v0.3.0/schema/report.schema.json",
   "tool": "launchgrade",
   "version": "0.3.0",
-  "generatedAt": "2026-11-07T19:42:01.223Z",
-  "url": "http://127.0.0.1:8125/",
-  "requestedUrl": "http://127.0.0.1:8125/",
+  "generatedAt": "2026-11-07T19:46:17.897Z",
+  "url": "https://fastpresspages.github.io/contextpack/",
+  "requestedUrl": "https://fastpresspages.github.io/contextpack/",
   "httpStatus": 200,
-  "responseMs": 38,
+  "responseMs": 357,
   "htmlBytes": 23348,
   "grade": "A+",
-  "score": 99,
+  "score": 100,
   "label": "Launch-ready",
   "counts": {
-    "pass": 47,
+    "pass": 48,
     "warn": 1,
     "fail": 0,
     "info": 5,
     "error": 0,
-    "skipped": 1,
+    "skipped": 0,
     "total": 54
   },
   "categories": [
@@ -49,10 +49,10 @@
       "key": "technical",
       "label": "Technical",
       "short": "Tech",
-      "score": 97,
+      "score": 98,
       "weight": 20,
       "counts": {
-        "pass": 10,
+        "pass": 11,
         "warn": 1,
         "fail": 0
       }
@@ -113,7 +113,7 @@
       "title": "Measures visits",
       "detail": "No analytics detected.",
       "fix": "Add privacy-friendly analytics (Plausible, Umami, or a simple counter) before you announce.",
-      "impact": 0.53
+      "impact": 0.45
     }
   ],
   "checks": [
@@ -238,9 +238,9 @@
       "id": "tech.https",
       "category": "technical",
       "title": "Serves over HTTPS",
-      "status": "skipped",
+      "status": "pass",
       "weight": 3,
-      "detail": "Ignored by --ignore.",
+      "detail": "Final URL is HTTPS.",
       "fix": ""
     },
     {
@@ -258,7 +258,7 @@
       "title": "Loads the HTML quickly",
       "status": "pass",
       "weight": 2,
-      "detail": "HTML arrived in 38 ms.",
+      "detail": "HTML arrived in 357 ms.",
       "fix": ""
     },
     {
@@ -276,7 +276,7 @@
       "title": "Sets cache headers",
       "status": "pass",
       "weight": 1,
-      "detail": "Cache-Control: public, max-age=600.",
+      "detail": "Cache-Control: max-age=600.",
       "fix": ""
     },
     {
@@ -429,7 +429,7 @@
       "title": "Links its own pages",
       "status": "pass",
       "weight": 1,
-      "detail": "3 internal links found.",
+      "detail": "10 internal links found.",
       "fix": ""
     },
     {
