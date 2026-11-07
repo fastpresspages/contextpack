@@ -35,7 +35,7 @@ jobs:
           node -e "const pkg = require('./package.json'); if (pkg.dependencies && Object.keys(pkg.dependencies).length > 0) { console.error('Dependencies detected: runtime dependencies are strictly prohibited'); process.exit(1); } console.log('Zero runtime dependencies confirmed');"
 
       - name: Run test suite
-        run: node --test test/*.test.js
+        run: node --test
 
       - name: CLI smoke test
         run: |
