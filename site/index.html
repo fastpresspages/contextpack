@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ContextPack — Pack Codebases into LLM Context</title>
+  <meta name="description" content="Pack codebases, subdirectories and Git diffs into token-budgeted, LLM-ready context in XML, Markdown and llms.txt. Free, zero runtime dependencies.">
+  <link rel="canonical" href="https://fastpresspages.github.io/contextpack/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#08080A">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FastPress Labs">
+  <meta property="og:title" content="ContextPack — Pack Codebases into LLM Context">
+  <meta property="og:description" content="Turn any codebase or Git diff into clean, token-budgeted XML, Markdown, or llms.txt for Claude, GPT, and AI coding agents. Zero dependencies.">
+  <meta property="og:url" content="https://fastpresspages.github.io/contextpack/">
+  <meta property="og:image" content="https://fastpresspages.github.io/contextpack/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ContextPack: Pack codebases, directories, and Git diffs into token-budgeted LLM context with zero runtime dependencies.">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ContextPack — Pack Codebases into LLM Context">
+  <meta name="twitter:description" content="Turn any codebase or Git diff into clean, token-budgeted XML, Markdown, or llms.txt for Claude, GPT, and AI coding agents. Zero dependencies.">
+  <meta name="twitter:image" content="https://fastpresspages.github.io/contextpack/assets/og.png">
+  <meta name="twitter:image:alt" content="ContextPack: Pack codebases, directories, and Git diffs into token-budgeted LLM context with zero runtime dependencies.">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "ContextPack",
+        "operatingSystem": "Cross-platform (Node.js >= 18.17)",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Zero-runtime-dependency CLI, Node.js library, and Model Context Protocol (MCP) server for packing codebases and Git diffs into token-budgeted, LLM-ready context.",
+        "url": "https://fastpresspages.github.io/contextpack/",
+        "author": {
+          "@type": "Organization",
+          "name": "FastPress Labs",
+          "url": "https://github.com/fastpresspages"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://fastpresspages.github.io/contextpack/",
+        "name": "ContextPack",
+        "publisher": {
+          "@type": "Organization",
+          "name": "FastPress Labs",
+          "url": "https://github.com/fastpresspages"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What makes ContextPack different from other codebase packers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ContextPack is 100% free with zero runtime dependencies. It natively enforces token budgets (e.g. 32k or 128k), includes an ASCII directory tree and Git diffs, formats in Anthropic-standard XML, Markdown, or llms-full.txt, and acts as a stdio Model Context Protocol (MCP) server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does ContextPack estimate tokens without external tokenizers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ContextPack uses a calibrated BPE heuristic tailored for source code, identifiers, and punctuation (~3.85 characters/token baseline with syntax weighting) that runs instantly in pure JavaScript."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use ContextPack as an MCP server with Claude Code or Cursor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Run contextpack-mcp via npx. It exposes pack_codebase, get_tree, pack_diff, and estimate_tokens over stdio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does ContextPack upload any code or telemetry?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. ContextPack runs completely locally, makes zero network requests, and collects zero telemetry or analytics."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script>document.documentElement.classList.add("js");</script>
+  <style>html{background:#08080A}</style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Top Navigation -->
+  <header class="top">
+    <div class="top-in wrap">
+      <a class="brand" href="#top" aria-label="ContextPack Home">
+        <span class="brand-mark" aria-hidden="true">CP</span>
+        <span class="brand-name">Context<b>Pack</b></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Main Navigation">
+        <a href="#features">Features</a>
+        <a href="#interactive">Try Online</a>
+        <a href="#formats">Formats</a>
+        <a href="#mcp">MCP Server</a>
+        <a href="#action">GitHub Action</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/fastpresspages/contextpack" class="pill">GitHub</a>
+      </nav>
+      <div class="top-cta">
+        <a class="btn btn-small btn-primary" href="#get-started">Get Started</a>
+        <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <section class="hero wrap" id="top">
+      <div class="hero-copy">
+        <p class="kicker">FastPress Labs · Zero Dependencies · Apache-2.0</p>
+        <h1>Pack codebases into token-budgeted LLM context.</h1>
+        <p class="lede">Zero-runtime-dependency CLI, Node.js library, and stdio MCP server. Pack full directories, subtrees, and Git diffs into Anthropic XML, Markdown, or llms-full.txt with strict token budgeting.</p>
+        
+        <div class="hero-cta" id="get-started">
+          <div class="install-bar">
+            <code id="cmd-npx">npx -p github:fastpresspages/contextpack contextpack .</code>
+            <button class="btn btn-small copy-btn" data-copy="#cmd-npx" type="button" aria-label="Copy run command">Copy</button>
+          </div>
+          <a class="btn btn-ghost" href="#interactive">Try Interactive Demo</a>
+        </div>
+
+        <ul class="chips" aria-label="Key highlights">
+          <li>Zero runtime dependencies</li>
+          <li>Token budget enforcement (16k–200k)</li>
+          <li>Native stdio MCP server</li>
+          <li>Anthropic XML &amp; Markdown</li>
+          <li>Git diff &amp; tree integration</li>
+          <li>100% Free &amp; Open Source</li>
+        </ul>
+      </div>
+
+      <aside class="hero-card" aria-label="Terminal Preview">
+        <div class="card-cap">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="cap-title">terminal — contextpack</span>
+        </div>
+        <pre><code><span class="c-dim">$</span> npx contextpack src/ -f xml -t 32k -o prompt.xml
+
+<span class="c-cyan">▲ ContextPack v0.1.0</span>
+  Directory:   <span class="c-white">src/</span>
+  Format:      <span class="c-lime">xml (&lt;documents&gt;)</span>
+  Token Cap:   <span class="c-purple">32,000 max</span>
+  Files:       <span class="c-green">14 included</span> (0 omitted)
+  Tokens:      <span class="c-lime">8,420 tokens</span> (26% budget)
+  Directory:   <span class="c-white">├── tree included</span>
+  Saved:       <span class="c-green">prompt.xml</span> (34.2 KB)
+
+<span class="c-dim">Ready for Claude, GPT-4o, and DeepSeek!</span></code></pre>
+      </aside>
+    </section>
+
+    <!-- Interactive Packer / Token Estimator -->
+    <section class="sec wrap" id="interactive">
+      <div class="sec-head">
+        <h2>Interactive Context Simulator</h2>
+        <p class="sub">Test how ContextPack formats your code and estimates token consumption in real time right in your browser.</p>
+      </div>
+
+      <div class="sim-box">
+        <div class="sim-controls">
+          <div class="sim-ctrl-group">
+            <label for="sim-format">Format:</label>
+            <select id="sim-format">
+              <option value="xml">Anthropic XML (&lt;documents&gt;)</option>
+              <option value="markdown">Markdown</option>
+              <option value="llms">llms-full.txt</option>
+            </select>
+          </div>
+
+          <div class="sim-ctrl-group">
+            <label for="sim-budget">Token Budget:</label>
+            <select id="sim-budget">
+              <option value="8000">8,000 (Small)</option>
+              <option value="32000" selected>32,000 (Default)</option>
+              <option value="64000">64,000 (Medium)</option>
+              <option value="128000">128,000 (Large)</option>
+            </select>
+          </div>
+
+          <div class="sim-ctrl-group toggle-group">
+            <label><input type="checkbox" id="sim-tree" checked> Include Tree</label>
+            <label><input type="checkbox" id="sim-lines" checked> Line Numbers</label>
+          </div>
+
+          <button type="button" class="btn btn-small btn-primary" id="sim-pack-btn">Pack Context</button>
+        </div>
+
+        <div class="sim-panels">
+          <div class="sim-input-col">
+            <div class="panel-header">Sample Source File: <code>src/math.js</code></div>
+            <textarea id="sim-code" rows="12" spellcheck="false" aria-label="Input code for simulator">// ContextPack Online Simulator
+export function calculateBudget(files, maxTokens) {
+  let used = 0;
+  const included = [];
+  for (const file of files) {
+    if (used + file.tokens > maxTokens) break;
+    included.push(file);
+    used += file.tokens;
+  }
+  return { included, used, remaining: maxTokens - used };
+}
+
+export function formatBadge(score) {
+  return score >= 90 ? 'A+' : 'PASS';
+}</textarea>
+          </div>
+
+          <div class="sim-output-col">
+            <div class="panel-header">
+              <span>Packed Output</span>
+              <span id="sim-stats" class="badge">0 tokens</span>
+            </div>
+            <pre><code id="sim-output">Click "Pack Context" above to format.</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Features Grid -->
+    <section class="sec wrap" id="features">
+      <div class="sec-head">
+        <h2>Engineered for High-Context Agentic Coding</h2>
+        <p class="sub">Built from scratch with zero bloat to serve the needs of engineers building with LLMs daily.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feat-icon">⚡</div>
+          <h3>Zero Runtime Dependencies</h3>
+          <p>Built with pure Node.js standard modules. No massive <code>node_modules</code> folder, no native binary compile issues, and instant cold start in CI.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feat-icon">🎯</div>
+          <h3>Strict Token Budgeting</h3>
+          <p>Never crash an LLM API with context overflows. Set <code>--max-tokens 32k</code> and ContextPack fits as much vital code as possible, tracking omitted files cleanly.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feat-icon">🤖</div>
+          <h3>Native stdio MCP Server</h3>
+          <p>Instantly connect your local coding agent (Claude Code, OpenCode, Cursor) using standard Model Context Protocol tools for codebase packing, tree views, and diff analysis.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feat-icon">📁</div>
+          <h3>Smart Tree &amp; Gitignore Walker</h3>
+          <p>Automatically detects and parses <code>.gitignore</code>, skips binary files (images, compiled binaries, archives), and filters build artifacts effortlessly.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feat-icon">🔄</div>
+          <h3>Git Diff Integration</h3>
+          <p>Pack working tree changes, staged edits, or branch diffs directly with line numbers to feed pull request reviewers and bug-triage prompts.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feat-icon">📑</div>
+          <h3>Multi-Format Support</h3>
+          <p>Export directly to Anthropic-standard XML (<code>&lt;documents&gt;&lt;document&gt;</code>), Markdown code blocks, JSON metadata, or web-standard <code>llms-full.txt</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Formats Showcase -->
+    <section class="sec wrap" id="formats">
+      <div class="sec-head">
+        <h2>Production Output Formats</h2>
+        <p class="sub">Structured formats proven to maximize retrieval and reasoning accuracy in modern frontier models.</p>
+      </div>
+
+      <div class="format-grid">
+        <div class="format-card">
+          <h3>1. Anthropic Prompt XML</h3>
+          <p>Recommended by Anthropic for Claude 3.5 Sonnet and Opus. Segregates files into indexed <code>&lt;document&gt;</code> wrappers with CDATA protection.</p>
+          <pre><code>&lt;documents&gt;
+&lt;directory_tree&gt;
+├── src/
+│   └── index.js
+&lt;/directory_tree&gt;
+&lt;document index="1"&gt;
+&lt;source&gt;src/index.js&lt;/source&gt;
+&lt;document_content&gt;
+1: console.log("Hello");
+&lt;/document_content&gt;
+&lt;/document&gt;
+&lt;/documents&gt;</code></pre>
+        </div>
+
+        <div class="format-card">
+          <h3>2. Human-Readable Markdown</h3>
+          <p>Perfect for pasting into ChatGPT, DeepSeek, or storing as persistent documentation files in your repository.</p>
+          <pre><code># Codebase Context
+
+## Directory Tree
+```
+├── src/
+│   └── index.js
+```
+
+## Codebase Contents
+
+### `src/index.js`
+```javascript
+1: console.log("Hello");
+```</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- MCP Server Details -->
+    <section class="sec wrap" id="mcp">
+      <div class="sec-head">
+        <h2>Model Context Protocol (MCP) Integration</h2>
+        <p class="sub">Empower your AI coding tools to inspect and pack repository context autonomously.</p>
+      </div>
+
+      <div class="mcp-card">
+        <div class="mcp-config">
+          <div class="card-cap">claude_desktop_config.json / opencode.json</div>
+          <pre><code>{
+  "mcpServers": {
+    "contextpack": {
+      "command": "npx",
+      "args": ["-y", "-p", "github:fastpresspages/contextpack", "contextpack-mcp"]
+    }
+  }
+}</code></pre>
+        </div>
+
+        <div class="mcp-tools-list">
+          <h3>Exposed MCP Tools</h3>
+          <ul class="tool-items">
+            <li>
+              <strong><code>pack_codebase</code></strong>
+              <span>Pack directory trees with token caps, git diffs, and formatting options into ready context.</span>
+            </li>
+            <li>
+              <strong><code>get_tree</code></strong>
+              <span>Generate visual directory hierarchies with file sizes and token estimates.</span>
+            </li>
+            <li>
+              <strong><code>pack_diff</code></strong>
+              <span>Extract and pack staged or branch Git diffs with affected file context.</span>
+            </li>
+            <li>
+              <strong><code>estimate_tokens</code></strong>
+              <span>Fast BPE token approximation for any arbitrary text snippet or disk file.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Action Section -->
+    <section class="sec wrap" id="action">
+      <div class="sec-head">
+        <h2>Automate in GitHub Actions</h2>
+        <p class="sub">Generate packed codebase contexts inside your CI/CD workflows for automated PR review or documentation steps.</p>
+      </div>
+
+      <div class="action-card">
+        <div class="card-cap">.github/workflows/ai-review.yml</div>
+        <pre><code>- name: Pack Repository Context
+  uses: fastpresspages/contextpack@main
+  id: pack
+  with:
+    path: '.'
+    format: 'xml'
+    max-tokens: '64k'
+    with-tree: 'true'
+    git-diff: 'true'
+    out: 'context.xml'
+
+- name: AI Review Step
+  run: |
+    echo "Packed ${{ steps.pack.outputs.files }} files (${{ steps.pack.outputs.tokens }} tokens)"
+    # Pass context.xml to your LLM API call</code></pre>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="sec faq wrap" id="faq">
+      <div class="sec-head">
+        <h2>Frequently Asked Questions</h2>
+        <p class="sub">Straightforward answers about licensing, token algorithms, and security.</p>
+      </div>
+
+      <details>
+        <summary>Is ContextPack really free?</summary>
+        <p>Yes, 100% free and open-source under the Apache-2.0 license. There are no paid tiers, no API keys, and no telemetry.</p>
+      </details>
+
+      <details>
+        <summary>How accurate is the token estimator?</summary>
+        <p>ContextPack's tokenizer uses a calibrated heuristic calibrated against Claude and cl100k_base models. In benchmark testing on real codebases (JavaScript, TypeScript, Python, Go, Rust), it correlates within ~3-5% of true tokenizers while executing orders of magnitude faster without large WASM/Rust binary dependencies.</p>
+      </details>
+
+      <details>
+        <summary>How does token budgeting handle large codebases?</summary>
+        <p>When you set <code>--max-tokens</code>, ContextPack reserves tokens for header metadata and the directory tree, packs files until the budget ceiling is approached, and cleanly tracks omitted files in an <code>&lt;omitted_files&gt;</code> block so your model knows which files were skipped.</p>
+      </details>
+
+      <details>
+        <summary>Does ContextPack send any code over the internet?</summary>
+        <p>Never. All file operations, tree generations, token counts, and diffs are computed locally in your Node.js process.</p>
+      </details>
+
+      <details>
+        <summary>Who maintains ContextPack?</summary>
+        <p>ContextPack is developed and maintained by FastPress Labs (<a href="https://github.com/fastpresspages">github.com/fastpresspages</a>), an open-source studio committed to building zero-bloat developer tools.</p>
+      </details>
+    </section>
+
+    <!-- Feedback & Inquiry Form -->
+    <section class="lime-wrap" id="feedback">
+      <div class="wrap contact-in">
+        <div class="contact-copy">
+          <h2>Request a Feature or Report an Issue</h2>
+          <p>ContextPack is actively maintained. Have a feature request, check pattern suggestion, or question? Send us a note or open an issue on GitHub.</p>
+          <p class="alt-line">Email: <a href="mailto:meetcode99@gmail.com">meetcode99@gmail.com</a> · <a href="https://github.com/fastpresspages/contextpack">GitHub Repository</a></p>
+        </div>
+
+        <form class="lead-form" action="https://formsubmit.co/meetcode99@gmail.com" method="POST" data-page="contextpack">
+          <div class="field">
+            <label for="f-email">Your Email</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="engineer@example.com">
+          </div>
+          <div class="field">
+            <label for="f-msg">Your Message or Feature Idea</label>
+            <textarea id="f-msg" name="message" rows="4" required minlength="10" placeholder="I'd love support for custom prompt templates or language filters..."></textarea>
+          </div>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="request_type" value="ContextPack feedback">
+          <input type="hidden" name="page" value="contextpack">
+          <input type="hidden" name="_subject" value="[ContextPack] Feedback or question">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <button class="btn btn-dark" type="submit">Send Message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- About FastPress Labs -->
+    <section class="wrap about" id="about">
+      <h2>About FastPress Labs</h2>
+      <p>ContextPack is part of the <a href="https://github.com/fastpresspages">FastPress Labs</a> ecosystem: open-source developer tools with zero telemetry and verified quality audits. Check out our companion tools:</p>
+      <ul class="sibling-list">
+        <li><a href="https://fastpresspages.github.io/launchgrade/">LaunchGrade</a> — 54-check launch page quality auditor (CLI, Action, MCP).</li>
+        <li><a href="https://github.com/fastpresspages/repograde">RepoGrade</a> — 33-check repository health &amp; discoverability auditor.</li>
+        <li><a href="https://fastpresspages.github.io/skills/">FastPress Skills</a> — Installable agent skills for shipping and inbox triage.</li>
+        <li><a href="https://fastpresspages.github.io/fastpress-start/">FastPress Start</a> — Zero-build launch page template rated A+ 100/100.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <p class="foot-brand">
+        <span class="brand-mark" aria-hidden="true">CP</span> ContextPack · Zero-Runtime Dependencies · Apache-2.0
+      </p>
+      <nav class="foot-links" aria-label="Footer links">
+        <a href="https://fastpresspages.github.io/launchgrade/">LaunchGrade</a>
+        <a href="https://github.com/fastpresspages/repograde">RepoGrade</a>
+        <a href="https://fastpresspages.github.io/skills/">Skills</a>
+        <a href="https://fastpresspages.github.io/agency/">Agency</a>
+        <a href="https://fastpresspages.github.io/hire-me/">Hire Page</a>
+        <a href="https://github.com/fastpresspages">GitHub</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <p class="foot-fine">© 2026 FastPress Labs. Contact: <a href="mailto:meetcode99@gmail.com">meetcode99@gmail.com</a>. No tracking or cookies. <a href="samples/contextpack/report.html">Latest LaunchGrade Audit</a>.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

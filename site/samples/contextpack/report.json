@@ -1,0 +1,608 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fastpresspages/launchgrade/v0.3.0/schema/report.schema.json",
+  "tool": "launchgrade",
+  "version": "0.3.0",
+  "generatedAt": "2026-11-07T19:42:01.223Z",
+  "url": "http://127.0.0.1:8125/",
+  "requestedUrl": "http://127.0.0.1:8125/",
+  "httpStatus": 200,
+  "responseMs": 38,
+  "htmlBytes": 23348,
+  "grade": "A+",
+  "score": 99,
+  "label": "Launch-ready",
+  "counts": {
+    "pass": 47,
+    "warn": 1,
+    "fail": 0,
+    "info": 5,
+    "error": 0,
+    "skipped": 1,
+    "total": 54
+  },
+  "categories": [
+    {
+      "key": "conversion",
+      "label": "Conversion",
+      "short": "Convert",
+      "score": 100,
+      "weight": 25,
+      "counts": {
+        "pass": 7,
+        "warn": 0,
+        "fail": 0
+      }
+    },
+    {
+      "key": "trust",
+      "label": "Trust",
+      "short": "Trust",
+      "score": 100,
+      "weight": 15,
+      "counts": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      }
+    },
+    {
+      "key": "technical",
+      "label": "Technical",
+      "short": "Tech",
+      "score": 97,
+      "weight": 20,
+      "counts": {
+        "pass": 10,
+        "warn": 1,
+        "fail": 0
+      }
+    },
+    {
+      "key": "seo",
+      "label": "SEO",
+      "short": "SEO",
+      "score": 100,
+      "weight": 15,
+      "counts": {
+        "pass": 9,
+        "warn": 0,
+        "fail": 0
+      }
+    },
+    {
+      "key": "social",
+      "label": "Social sharing",
+      "short": "Social",
+      "score": 100,
+      "weight": 10,
+      "counts": {
+        "pass": 3,
+        "warn": 0,
+        "fail": 0
+      }
+    },
+    {
+      "key": "a11y",
+      "label": "Accessibility",
+      "short": "A11y",
+      "score": 100,
+      "weight": 5,
+      "counts": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      }
+    },
+    {
+      "key": "agent",
+      "label": "AI-agent readiness",
+      "short": "Agents",
+      "score": 100,
+      "weight": 10,
+      "counts": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      }
+    }
+  ],
+  "topFixes": [
+    {
+      "id": "tech.analytics",
+      "status": "warn",
+      "title": "Measures visits",
+      "detail": "No analytics detected.",
+      "fix": "Add privacy-friendly analytics (Plausible, Umami, or a simple counter) before you announce.",
+      "impact": 0.53
+    }
+  ],
+  "checks": [
+    {
+      "id": "conv.email-capture",
+      "category": "conversion",
+      "title": "Has an email capture",
+      "status": "pass",
+      "weight": 3,
+      "detail": "1 form can capture an email (posts to https://formsubmit.co/meetcode99@gmail.com).",
+      "fix": ""
+    },
+    {
+      "id": "conv.cta",
+      "category": "conversion",
+      "title": "Has a specific call to action",
+      "status": "pass",
+      "weight": 3,
+      "detail": "Found a direct CTA: “Try Online”.",
+      "fix": ""
+    },
+    {
+      "id": "conv.social-proof",
+      "category": "conversion",
+      "title": "Shows social proof",
+      "status": "pass",
+      "weight": 2,
+      "detail": "Social proof language found (“review”).",
+      "fix": ""
+    },
+    {
+      "id": "conv.friction",
+      "category": "conversion",
+      "title": "Keeps signup friction low",
+      "status": "pass",
+      "weight": 2,
+      "detail": "The lightest form asks for 2 fields.",
+      "fix": ""
+    },
+    {
+      "id": "conv.contact",
+      "category": "conversion",
+      "title": "Offers a human contact path",
+      "status": "pass",
+      "weight": 2,
+      "detail": "Direct email link found (meetcode99@gmail.com).",
+      "fix": ""
+    },
+    {
+      "id": "conv.value-prop",
+      "category": "conversion",
+      "title": "States a clear value proposition",
+      "status": "pass",
+      "weight": 2,
+      "detail": "H1 is 6 words and a meta description explains the offer.",
+      "fix": ""
+    },
+    {
+      "id": "conv.risk-reversal",
+      "category": "conversion",
+      "title": "Reverses the risk of clicking",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Risk-reversal language found (“privacy”).",
+      "fix": ""
+    },
+    {
+      "id": "trust.privacy",
+      "category": "trust",
+      "title": "Links a privacy policy",
+      "status": "pass",
+      "weight": 3,
+      "detail": "Privacy policy link found.",
+      "fix": ""
+    },
+    {
+      "id": "trust.terms",
+      "category": "trust",
+      "title": "Links terms of service",
+      "status": "pass",
+      "weight": 2,
+      "detail": "Terms link found.",
+      "fix": ""
+    },
+    {
+      "id": "trust.about",
+      "category": "trust",
+      "title": "Explains who is behind the page",
+      "status": "pass",
+      "weight": 1,
+      "detail": "About/team link found (“About”).",
+      "fix": ""
+    },
+    {
+      "id": "trust.social-presence",
+      "category": "trust",
+      "title": "Links a real social profile",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Social profile linked (github.com).",
+      "fix": ""
+    },
+    {
+      "id": "trust.security-txt",
+      "category": "trust",
+      "title": "Publishes a security contact",
+      "status": "pass",
+      "weight": 1,
+      "detail": "security.txt is published with a contact.",
+      "fix": ""
+    },
+    {
+      "id": "trust.copyright",
+      "category": "trust",
+      "title": "Shows a current footer",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Footer copyright is current (2026).",
+      "fix": ""
+    },
+    {
+      "id": "tech.https",
+      "category": "technical",
+      "title": "Serves over HTTPS",
+      "status": "skipped",
+      "weight": 3,
+      "detail": "Ignored by --ignore.",
+      "fix": ""
+    },
+    {
+      "id": "tech.status",
+      "category": "technical",
+      "title": "Returns a healthy status",
+      "status": "pass",
+      "weight": 3,
+      "detail": "Page returned HTTP 200.",
+      "fix": ""
+    },
+    {
+      "id": "tech.speed",
+      "category": "technical",
+      "title": "Loads the HTML quickly",
+      "status": "pass",
+      "weight": 2,
+      "detail": "HTML arrived in 38 ms.",
+      "fix": ""
+    },
+    {
+      "id": "tech.compression",
+      "category": "technical",
+      "title": "Compresses the response",
+      "status": "pass",
+      "weight": 2,
+      "detail": "Content-Encoding: gzip.",
+      "fix": ""
+    },
+    {
+      "id": "tech.cache",
+      "category": "technical",
+      "title": "Sets cache headers",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Cache-Control: public, max-age=600.",
+      "fix": ""
+    },
+    {
+      "id": "tech.viewport",
+      "category": "technical",
+      "title": "Is mobile-ready",
+      "status": "pass",
+      "weight": 2,
+      "detail": "Responsive viewport is configured.",
+      "fix": ""
+    },
+    {
+      "id": "tech.indexable",
+      "category": "technical",
+      "title": "Allows search indexing",
+      "status": "pass",
+      "weight": 2,
+      "detail": "No noindex directive found.",
+      "fix": ""
+    },
+    {
+      "id": "tech.canonical",
+      "category": "technical",
+      "title": "Declares a canonical URL",
+      "status": "pass",
+      "weight": 2,
+      "detail": "Canonical: https://fastpresspages.github.io/contextpack/.",
+      "fix": ""
+    },
+    {
+      "id": "tech.lang",
+      "category": "technical",
+      "title": "Declares the page language",
+      "status": "pass",
+      "weight": 1,
+      "detail": "html lang=\"en\".",
+      "fix": ""
+    },
+    {
+      "id": "tech.favicon",
+      "category": "technical",
+      "title": "Has a favicon",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Favicon linked (assets/favicon.svg).",
+      "fix": ""
+    },
+    {
+      "id": "tech.mixed-content",
+      "category": "technical",
+      "title": "Avoids mixed content",
+      "status": "pass",
+      "weight": 2,
+      "detail": "No insecure http:// assets found.",
+      "fix": ""
+    },
+    {
+      "id": "tech.analytics",
+      "category": "technical",
+      "title": "Measures visits",
+      "status": "warn",
+      "weight": 1,
+      "detail": "No analytics detected.",
+      "fix": "Add privacy-friendly analytics (Plausible, Umami, or a simple counter) before you announce."
+    },
+    {
+      "id": "tech.image-dimensions",
+      "category": "technical",
+      "title": "Defines image dimensions",
+      "status": "info",
+      "weight": 2,
+      "detail": "No images to check.",
+      "fix": ""
+    },
+    {
+      "id": "seo.title",
+      "category": "seo",
+      "title": "Has a well-sized title",
+      "status": "pass",
+      "weight": 3,
+      "detail": "Title is 45 characters.",
+      "fix": ""
+    },
+    {
+      "id": "seo.description",
+      "category": "seo",
+      "title": "Has a meta description",
+      "status": "pass",
+      "weight": 3,
+      "detail": "Description is 147 characters.",
+      "fix": ""
+    },
+    {
+      "id": "seo.h1",
+      "category": "seo",
+      "title": "Has exactly one H1",
+      "status": "pass",
+      "weight": 3,
+      "detail": "One H1: “Pack codebases into token-budgeted LLM context.”.",
+      "fix": ""
+    },
+    {
+      "id": "seo.heading-order",
+      "category": "seo",
+      "title": "Uses a sane heading outline",
+      "status": "pass",
+      "weight": 1,
+      "detail": "18 headings, 8 H2 sections.",
+      "fix": ""
+    },
+    {
+      "id": "seo.alt",
+      "category": "seo",
+      "title": "Describes its images",
+      "status": "info",
+      "weight": 2,
+      "detail": "No images to check.",
+      "fix": ""
+    },
+    {
+      "id": "seo.sitemap",
+      "category": "seo",
+      "title": "Publishes a sitemap",
+      "status": "pass",
+      "weight": 2,
+      "detail": "sitemap.xml is valid XML.",
+      "fix": ""
+    },
+    {
+      "id": "seo.robots",
+      "category": "seo",
+      "title": "Publishes robots.txt",
+      "status": "pass",
+      "weight": 1,
+      "detail": "robots.txt is published.",
+      "fix": ""
+    },
+    {
+      "id": "seo.schema",
+      "category": "seo",
+      "title": "Adds structured data",
+      "status": "pass",
+      "weight": 2,
+      "detail": "JSON-LD found: SoftwareApplication, WebSite, FAQPage.",
+      "fix": ""
+    },
+    {
+      "id": "seo.internal-links",
+      "category": "seo",
+      "title": "Links its own pages",
+      "status": "pass",
+      "weight": 1,
+      "detail": "3 internal links found.",
+      "fix": ""
+    },
+    {
+      "id": "seo.text-ratio",
+      "category": "seo",
+      "title": "Has readable copy in the HTML",
+      "status": "pass",
+      "weight": 1,
+      "detail": "30.7% of the HTML is readable text.",
+      "fix": ""
+    },
+    {
+      "id": "social.open-graph",
+      "category": "social",
+      "title": "Has a complete Open Graph card",
+      "status": "pass",
+      "weight": 3,
+      "detail": "og:title, og:description, og:image and og:url are all set.",
+      "fix": ""
+    },
+    {
+      "id": "social.twitter",
+      "category": "social",
+      "title": "Has a Twitter/X card",
+      "status": "pass",
+      "weight": 2,
+      "detail": "twitter:card=summary_large_image with an image.",
+      "fix": ""
+    },
+    {
+      "id": "social.og-image-alt",
+      "category": "social",
+      "title": "Describes the share image",
+      "status": "pass",
+      "weight": 1,
+      "detail": "og:image:alt is set.",
+      "fix": ""
+    },
+    {
+      "id": "a11y.form-labels",
+      "category": "a11y",
+      "title": "Labels its form fields",
+      "status": "pass",
+      "weight": 2,
+      "detail": "2/2 fields are labelled.",
+      "fix": ""
+    },
+    {
+      "id": "a11y.button-names",
+      "category": "a11y",
+      "title": "Gives buttons accessible names",
+      "status": "pass",
+      "weight": 2,
+      "detail": "4 buttons have a name.",
+      "fix": ""
+    },
+    {
+      "id": "a11y.link-text",
+      "category": "a11y",
+      "title": "Writes descriptive link text",
+      "status": "pass",
+      "weight": 1,
+      "detail": "No vague link text found.",
+      "fix": ""
+    },
+    {
+      "id": "a11y.landmarks",
+      "category": "a11y",
+      "title": "Uses landmark elements",
+      "status": "pass",
+      "weight": 1,
+      "detail": "main and nav landmarks are present.",
+      "fix": ""
+    },
+    {
+      "id": "a11y.zoom",
+      "category": "a11y",
+      "title": "Allows pinch-zoom",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Zoom is not blocked.",
+      "fix": ""
+    },
+    {
+      "id": "a11y.skip-link",
+      "category": "a11y",
+      "title": "Offers a skip link",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Skip-to-content link found.",
+      "fix": ""
+    },
+    {
+      "id": "agent.llms-txt",
+      "category": "agent",
+      "title": "Publishes llms.txt",
+      "status": "pass",
+      "weight": 3,
+      "detail": "llms.txt is published with a title and content.",
+      "fix": ""
+    },
+    {
+      "id": "agent.llms-full",
+      "category": "agent",
+      "title": "Offers a full-context file",
+      "status": "pass",
+      "weight": 1,
+      "detail": "llms-full.txt is available (1 KB).",
+      "fix": ""
+    },
+    {
+      "id": "agent.robots-ai",
+      "category": "agent",
+      "title": "Lets AI crawlers in",
+      "status": "pass",
+      "weight": 2,
+      "detail": "All 6 major AI/search crawlers are allowed.",
+      "fix": ""
+    },
+    {
+      "id": "agent.agents-md",
+      "category": "agent",
+      "title": "Speaks to coding agents",
+      "status": "info",
+      "weight": 1,
+      "detail": "No AGENTS.md (emerging convention).",
+      "fix": "Add AGENTS.md if developers or coding agents integrate with your product."
+    },
+    {
+      "id": "agent.markdown",
+      "category": "agent",
+      "title": "Serves markdown to agents",
+      "status": "info",
+      "weight": 1,
+      "detail": "No markdown alternate or content negotiation.",
+      "fix": "Optional: serve text/markdown when Accept asks for it, or link a .md alternate."
+    },
+    {
+      "id": "agent.mcp",
+      "category": "agent",
+      "title": "Exposes a machine-readable API",
+      "status": "info",
+      "weight": 1,
+      "detail": "No MCP/OpenAPI descriptor (only needed if agents can act on your product).",
+      "fix": "Publish a descriptor when you ship an API or MCP server."
+    },
+    {
+      "id": "agent.faq",
+      "category": "agent",
+      "title": "Answers buying questions",
+      "status": "pass",
+      "weight": 2,
+      "detail": "FAQPage structured data is present.",
+      "fix": ""
+    },
+    {
+      "id": "agent.semantic-html",
+      "category": "agent",
+      "title": "Uses semantic HTML",
+      "status": "pass",
+      "weight": 1,
+      "detail": "Semantic main/article/nav structure found.",
+      "fix": ""
+    },
+    {
+      "id": "agent.no-js-copy",
+      "category": "agent",
+      "title": "Works without JavaScript",
+      "status": "pass",
+      "weight": 2,
+      "detail": "7177 characters of copy are in the HTML.",
+      "fix": ""
+    }
+  ],
+  "comparison": null
+}

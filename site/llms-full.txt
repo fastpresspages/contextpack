@@ -1,0 +1,22 @@
+# ContextPack Full Context
+
+This document contains the complete architectural and operational context for ContextPack, maintained by FastPress Labs.
+
+## Overview
+ContextPack is a developer tool and MCP server designed to eliminate prompt overflow and simplify context injection for LLMs. It converts directories, subtrees, and Git diffs into structured context formats while strictly capping tokens according to user-defined limits.
+
+## Core Modules
+1. `src/tokenizer.js`: Calibrated BPE approximation heuristic for code. Computes tokens at ~3.85 characters/token plus syntax weights.
+2. `src/walker.js`: Recursive directory walker that respects `.gitignore` rules, skips binary files (null-byte inspection), and filters build artifacts.
+3. `src/tree.js`: ASCII/Unicode directory tree generator with depth control and file size display.
+4. `src/git.js`: Child-process wrapper around git diff and commit inspection.
+5. `src/pack.js`: Formatting and token-budgeting engine producing XML, Markdown, and llms.txt.
+6. `mcp/server.js`: JSON-RPC 2.0 stdio server exposing four MCP tools.
+
+## Installation & Execution
+- CLI: `npx -p github:fastpresspages/contextpack contextpack [target] [options]`
+- MCP Server: `npx -p github:fastpresspages/contextpack contextpack-mcp`
+- Node.js API: `import { pack, countTokens, buildTree } from 'contextpack';`
+
+## Security & Privacy
+ContextPack runs locally. It makes no remote network requests, sends no telemetry, and reads only requested files.

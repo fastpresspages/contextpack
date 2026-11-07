@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>127.0.0.1:8125 — LaunchGrade A+ (99/100)</title>
+<meta name="description" content="LaunchGrade report for 127.0.0.1:8125: A+, 99/100. Conversion, trust, SEO, social, accessibility and AI-agent readiness.">
+<meta property="og:title" content="127.0.0.1:8125 scored A+ on LaunchGrade">
+<meta property="og:description" content="99/100 — Launch-ready. See every check and the exact fixes.">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #08080a; --panel: #101014; --panel2: #15151b; --line: #24242e;
+    --text: #f4f4f5; --muted: #9a9aa8; --dim: #6b6b78;
+    --lime: #c6ff4a; --green: #3ddc84; --yellow: #ffb020; --orange: #ff7a45; --red: #ff5c5c;
+    --violet: #a78bfa;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--lime); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+  header { padding: 28px 0 10px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; }
+  .mark { width: 30px; height: 30px; border-radius: 9px; background: var(--lime); color: #060608; display: grid; place-items: center; font-weight: 900; }
+  .brand span { color: var(--muted); font-weight: 500; font-size: 14px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 15px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--panel); color: var(--text); font-size: 14px; font-weight: 600;
+  }
+  .btn.primary { background: var(--lime); color: #060608; border-color: var(--lime); }
+  .btn:hover { text-decoration: none; border-color: #3a3a48; }
+  .hero { margin-top: 26px; border: 1px solid var(--line); background: radial-gradient(1200px 400px at 10% -20%, #1c2410 0%, transparent 60%), var(--panel); border-radius: 24px; overflow: hidden; }
+  .hero-top { display: grid; grid-template-columns: 1.5fr .9fr; gap: 0; }
+  .hero-copy { padding: 38px 38px 30px; }
+  .eyebrow { color: var(--lime); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; }
+  h1 { font-size: clamp(30px, 5vw, 52px); line-height: 1.03; letter-spacing: -.045em; margin: 12px 0 14px; }
+  h1 em { font-style: normal; color: var(--lime); }
+  .url { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--muted); word-break: break-all; }
+  .meta { color: var(--dim); font-size: 13px; margin-top: 6px; }
+  .hero-score { padding: 30px; display: grid; place-items: center; border-left: 1px solid var(--line); background: #0c0c10; }
+  .ring { --pct: 0; --color: var(--green); width: 176px; height: 176px; border-radius: 50%; background: conic-gradient(var(--color) calc(var(--pct) * 1%), #1e1e26 0); display: grid; place-items: center; position: relative; }
+  .ring::after { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: #0c0c10; }
+  .ring-inner { position: relative; z-index: 1; text-align: center; }
+  .grade { font-size: 56px; font-weight: 900; letter-spacing: -.06em; line-height: 1; color: var(--color); }
+  .outof { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .label { color: var(--text); font-weight: 700; margin-top: 10px; font-size: 15px; }
+  .stats { display: flex; gap: 16px; flex-wrap: wrap; padding: 16px 38px; border-top: 1px solid var(--line); background: #0c0c10; color: var(--muted); font-size: 13px; }
+  .stats b { color: var(--text); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  main { padding: 26px 0 60px; }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin: 0 0 26px; }
+  .cat { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 12px; }
+  .cat .n { font-size: 22px; font-weight: 800; letter-spacing: -.03em; }
+  .cat .k { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+  .bar { height: 5px; border-radius: 99px; background: #22222c; margin-top: 10px; overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 99px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 34px 0 14px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 24px; letter-spacing: -.03em; margin: 0; }
+  .section-head p { margin: 0; color: var(--muted); font-size: 14px; }
+  .fixes { display: grid; gap: 10px; }
+  .fix { display: grid; grid-template-columns: 34px 1fr; gap: 14px; border: 1px solid var(--line); background: var(--panel); border-radius: 14px; padding: 16px; }
+  .fix .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 13px; }
+  .fix.fail .num { background: rgba(255,92,92,.14); color: var(--red); }
+  .fix.warn .num { background: rgba(255,176,32,.14); color: var(--yellow); }
+  .fix h3 { margin: 0 0 3px; font-size: 15px; }
+  .fix p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  .fix .do { color: var(--text); }
+  .tag { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--dim); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; margin-left: 8px; white-space: nowrap; }
+  .check-group { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 26px; }
+  .group-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .group-head h3 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+  .group-head span { color: var(--dim); font-size: 12px; }
+  .check-list { display: grid; gap: 2px; margin-top: 10px; }
+  .check { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 11px 12px; border-radius: 10px; }
+  .check:hover { background: var(--panel); }
+  .check .status { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; margin-top: 1px; }
+  .check.pass .status { background: rgba(61,220,132,.14); color: var(--green); }
+  .check.warn .status { background: rgba(255,176,32,.14); color: var(--yellow); }
+  .check.fail .status { background: rgba(255,92,92,.14); color: var(--red); }
+  .check.info .status { background: rgba(154,154,168,.14); color: var(--muted); }
+  .check.skip .status { background: #1a1a22; color: var(--dim); }
+  .check h4 { margin: 0; font-size: 14px; font-weight: 600; }
+  .check h4 code { font-size: 10px; color: var(--dim); font-weight: 400; margin-left: 6px; }
+  .check p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+  .check .fix { display: block; border: 0; background: none; padding: 0; margin-top: 5px; color: var(--text); font-size: 13px; grid-template-columns: none; }
+  footer { border-top: 1px solid var(--line); padding: 30px 0 50px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer code { color: var(--lime); background: #141419; padding: 3px 7px; border-radius: 6px; }
+  .fine { color: var(--dim); font-size: 12px; max-width: 620px; margin-top: 10px; }
+  @media (max-width: 860px) {
+    .hero-top { grid-template-columns: 1fr; }
+    .hero-score { border-left: 0; border-top: 1px solid var(--line); }
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .wrap { width: min(100% - 24px, 1080px); }
+    .hero-copy { padding: 26px 22px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .stats { padding: 14px 22px; }
+    .check { grid-template-columns: 22px 1fr; padding: 10px 4px; }
+  }
+  @media print {
+    body { background: #fff; color: #111; }
+    .hero, .cat, .fix, .check-group { break-inside: avoid; }
+    .actions { display: none; }
+  }
+  .cmp-section { border-top: 1px solid var(--line); margin-top: 30px; padding-top: 18px; }
+  .cmp-hero { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .cmp-hero > div { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+  .grade-old { font-size: 34px; font-weight: 900; color: var(--muted); }
+  .grade-new { font-size: 34px; font-weight: 900; }
+  .cmp-arrow { font-weight: 800; font-size: 16px; }
+  .cmp-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+  .cmp-table th, .cmp-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  .cmp-table th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  .cmp-table td.num, .cmp-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .cmp-list { display: grid; gap: 8px; margin-top: 16px; }
+  .cmp-move { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+  .cmp-move .status { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; }
+  .cmp-move.better .status { background: rgba(61,220,132,.14); color: var(--green); }
+  .cmp-move.worse .status { background: rgba(255,92,92,.14); color: var(--red); }
+  .cmp-move code { font-size: 10px; color: var(--dim); margin-left: 6px; }
+  .cmp-move .dim { color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="https://github.com/fastpresspages/launchgrade">
+      <span class="mark">LG</span> LaunchGrade <span>open-source launch audit</span>
+    </a>
+    <div class="actions">
+      <a class="btn" href="https://twitter.com/intent/tweet?text=My%20launch%20page%20scored%20A%2B%20(99%2F100)%20on%20LaunchGrade.%0A%0AGrade%20yours%20in%2060%20seconds%3A&url=http%3A%2F%2F127.0.0.1%3A8125%2F" target="_blank" rel="noopener">Share score</a>
+      <a class="btn primary" href="https://fastpresspages.github.io/launchgrade/">Grade your page →</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-copy">
+        <div class="eyebrow">Launch audit · 2026-11-07</div>
+        <h1>127.0.0.1:8125 scored <em>A+</em>.</h1>
+        <div class="url">http://127.0.0.1:8125/</div>
+        <div class="meta">38 ms · 23 KB HTML · HTTP 200 · 48 scored checks</div>
+      </div>
+      <div class="hero-score">
+        <div class="ring" style="--pct:99;--color:#3ddc84">
+          <div class="ring-inner">
+            <div class="grade">A+</div>
+            <div class="outof">99 / 100</div>
+            <div class="label">Launch-ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <span><span class="dot" style="background:var(--green)"></span><b>47</b> passed</span>
+      <span><span class="dot" style="background:var(--yellow)"></span><b>1</b> warnings</span>
+      <span><span class="dot" style="background:var(--red)"></span><b>0</b> failed</span>
+      <span><span class="dot" style="background:var(--muted)"></span><b>5</b> informational</span>
+    </div>
+  </section>
+
+  <main>
+    <div class="grid">
+      
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">100</div>
+          <div class="k">Convert</div>
+          <div class="bar"><i style="width:100%;background:#3ddc84"></i></div>
+        </div>
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">100</div>
+          <div class="k">Trust</div>
+          <div class="bar"><i style="width:100%;background:#3ddc84"></i></div>
+        </div>
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">97</div>
+          <div class="k">Tech</div>
+          <div class="bar"><i style="width:97%;background:#3ddc84"></i></div>
+        </div>
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">100</div>
+          <div class="k">SEO</div>
+          <div class="bar"><i style="width:100%;background:#3ddc84"></i></div>
+        </div>
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">100</div>
+          <div class="k">Social</div>
+          <div class="bar"><i style="width:100%;background:#3ddc84"></i></div>
+        </div>
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">100</div>
+          <div class="k">A11y</div>
+          <div class="bar"><i style="width:100%;background:#3ddc84"></i></div>
+        </div>
+        <div class="cat">
+          <div class="n" style="color:#3ddc84">100</div>
+          <div class="k">Agents</div>
+          <div class="bar"><i style="width:100%;background:#3ddc84"></i></div>
+        </div>
+    </div>
+
+    
+
+    <div class="section-head">
+      <h2>Fix these first</h2>
+      <p>Ordered by impact on the grade. Each fix is specific enough to hand to a builder.</p>
+    </div>
+    <div class="fixes">
+      
+        <article class="fix warn">
+          <div class="num">1</div>
+          <div>
+            <h3>Measures visits<span class="tag">Technical</span><span class="tag">tech.analytics</span></h3>
+            <p>No analytics detected.</p>
+            <p class="do"><b>Fix:</b> Add privacy-friendly analytics (Plausible, Umami, or a simple counter) before you announce.</p>
+          </div>
+        </article>
+    </div>
+
+    <div class="section-head" id="all">
+      <h2>Every check</h2>
+      <p>Transcript of all 54 checks, including informational ones.</p>
+    </div>
+    
+      <section class="check-group">
+        <div class="group-head">
+          <h3>Conversion</h3>
+          <span>25% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has an email capture <code>conv.email-capture</code></h4>
+                <p>1 form can capture an email (posts to https://formsubmit.co/meetcode99@gmail.com).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has a specific call to action <code>conv.cta</code></h4>
+                <p>Found a direct CTA: “Try Online”.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Shows social proof <code>conv.social-proof</code></h4>
+                <p>Social proof language found (“review”).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Keeps signup friction low <code>conv.friction</code></h4>
+                <p>The lightest form asks for 2 fields.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Offers a human contact path <code>conv.contact</code></h4>
+                <p>Direct email link found (meetcode99@gmail.com).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>States a clear value proposition <code>conv.value-prop</code></h4>
+                <p>H1 is 6 words and a meta description explains the offer.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Reverses the risk of clicking <code>conv.risk-reversal</code></h4>
+                <p>Risk-reversal language found (“privacy”).</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+      <section class="check-group">
+        <div class="group-head">
+          <h3>Trust</h3>
+          <span>15% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Links a privacy policy <code>trust.privacy</code></h4>
+                <p>Privacy policy link found.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Links terms of service <code>trust.terms</code></h4>
+                <p>Terms link found.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Explains who is behind the page <code>trust.about</code></h4>
+                <p>About/team link found (“About”).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Links a real social profile <code>trust.social-presence</code></h4>
+                <p>Social profile linked (github.com).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Publishes a security contact <code>trust.security-txt</code></h4>
+                <p>security.txt is published with a contact.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Shows a current footer <code>trust.copyright</code></h4>
+                <p>Footer copyright is current (2026).</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+      <section class="check-group">
+        <div class="group-head">
+          <h3>Technical</h3>
+          <span>20% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check skip">
+              <span class="status" aria-label="skipped">–</span>
+              <div>
+                <h4>Serves over HTTPS <code>tech.https</code></h4>
+                <p>Ignored by --ignore.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Returns a healthy status <code>tech.status</code></h4>
+                <p>Page returned HTTP 200.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Loads the HTML quickly <code>tech.speed</code></h4>
+                <p>HTML arrived in 38 ms.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Compresses the response <code>tech.compression</code></h4>
+                <p>Content-Encoding: gzip.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Sets cache headers <code>tech.cache</code></h4>
+                <p>Cache-Control: public, max-age=600.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Is mobile-ready <code>tech.viewport</code></h4>
+                <p>Responsive viewport is configured.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Allows search indexing <code>tech.indexable</code></h4>
+                <p>No noindex directive found.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Declares a canonical URL <code>tech.canonical</code></h4>
+                <p>Canonical: https://fastpresspages.github.io/contextpack/.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Declares the page language <code>tech.lang</code></h4>
+                <p>html lang=&quot;en&quot;.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has a favicon <code>tech.favicon</code></h4>
+                <p>Favicon linked (assets/favicon.svg).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Avoids mixed content <code>tech.mixed-content</code></h4>
+                <p>No insecure http:// assets found.</p>
+                
+              </div>
+            </article>
+            <article class="check warn">
+              <span class="status" aria-label="warn">!</span>
+              <div>
+                <h4>Measures visits <code>tech.analytics</code></h4>
+                <p>No analytics detected.</p>
+                <p class="fix"><b>Fix:</b> Add privacy-friendly analytics (Plausible, Umami, or a simple counter) before you announce.</p>
+              </div>
+            </article>
+            <article class="check info">
+              <span class="status" aria-label="info">i</span>
+              <div>
+                <h4>Defines image dimensions <code>tech.image-dimensions</code></h4>
+                <p>No images to check.</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+      <section class="check-group">
+        <div class="group-head">
+          <h3>SEO</h3>
+          <span>15% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has a well-sized title <code>seo.title</code></h4>
+                <p>Title is 45 characters.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has a meta description <code>seo.description</code></h4>
+                <p>Description is 147 characters.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has exactly one H1 <code>seo.h1</code></h4>
+                <p>One H1: “Pack codebases into token-budgeted LLM context.”.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Uses a sane heading outline <code>seo.heading-order</code></h4>
+                <p>18 headings, 8 H2 sections.</p>
+                
+              </div>
+            </article>
+            <article class="check info">
+              <span class="status" aria-label="info">i</span>
+              <div>
+                <h4>Describes its images <code>seo.alt</code></h4>
+                <p>No images to check.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Publishes a sitemap <code>seo.sitemap</code></h4>
+                <p>sitemap.xml is valid XML.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Publishes robots.txt <code>seo.robots</code></h4>
+                <p>robots.txt is published.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Adds structured data <code>seo.schema</code></h4>
+                <p>JSON-LD found: SoftwareApplication, WebSite, FAQPage.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Links its own pages <code>seo.internal-links</code></h4>
+                <p>3 internal links found.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has readable copy in the HTML <code>seo.text-ratio</code></h4>
+                <p>30.7% of the HTML is readable text.</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+      <section class="check-group">
+        <div class="group-head">
+          <h3>Social sharing</h3>
+          <span>10% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has a complete Open Graph card <code>social.open-graph</code></h4>
+                <p>og:title, og:description, og:image and og:url are all set.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Has a Twitter/X card <code>social.twitter</code></h4>
+                <p>twitter:card=summary_large_image with an image.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Describes the share image <code>social.og-image-alt</code></h4>
+                <p>og:image:alt is set.</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+      <section class="check-group">
+        <div class="group-head">
+          <h3>Accessibility</h3>
+          <span>5% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Labels its form fields <code>a11y.form-labels</code></h4>
+                <p>2/2 fields are labelled.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Gives buttons accessible names <code>a11y.button-names</code></h4>
+                <p>4 buttons have a name.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Writes descriptive link text <code>a11y.link-text</code></h4>
+                <p>No vague link text found.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Uses landmark elements <code>a11y.landmarks</code></h4>
+                <p>main and nav landmarks are present.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Allows pinch-zoom <code>a11y.zoom</code></h4>
+                <p>Zoom is not blocked.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Offers a skip link <code>a11y.skip-link</code></h4>
+                <p>Skip-to-content link found.</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+      <section class="check-group">
+        <div class="group-head">
+          <h3>AI-agent readiness</h3>
+          <span>10% of grade</span>
+        </div>
+        <div class="check-list">
+          
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Publishes llms.txt <code>agent.llms-txt</code></h4>
+                <p>llms.txt is published with a title and content.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Offers a full-context file <code>agent.llms-full</code></h4>
+                <p>llms-full.txt is available (1 KB).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Lets AI crawlers in <code>agent.robots-ai</code></h4>
+                <p>All 6 major AI/search crawlers are allowed.</p>
+                
+              </div>
+            </article>
+            <article class="check info">
+              <span class="status" aria-label="info">i</span>
+              <div>
+                <h4>Speaks to coding agents <code>agent.agents-md</code></h4>
+                <p>No AGENTS.md (emerging convention).</p>
+                
+              </div>
+            </article>
+            <article class="check info">
+              <span class="status" aria-label="info">i</span>
+              <div>
+                <h4>Serves markdown to agents <code>agent.markdown</code></h4>
+                <p>No markdown alternate or content negotiation.</p>
+                
+              </div>
+            </article>
+            <article class="check info">
+              <span class="status" aria-label="info">i</span>
+              <div>
+                <h4>Exposes a machine-readable API <code>agent.mcp</code></h4>
+                <p>No MCP/OpenAPI descriptor (only needed if agents can act on your product).</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Answers buying questions <code>agent.faq</code></h4>
+                <p>FAQPage structured data is present.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Uses semantic HTML <code>agent.semantic-html</code></h4>
+                <p>Semantic main/article/nav structure found.</p>
+                
+              </div>
+            </article>
+            <article class="check pass">
+              <span class="status" aria-label="pass">✓</span>
+              <div>
+                <h4>Works without JavaScript <code>agent.no-js-copy</code></h4>
+                <p>7177 characters of copy are in the HTML.</p>
+                
+              </div>
+            </article>
+        </div>
+      </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong>Generated by LaunchGrade</strong> — the open-source launch audit.<br>
+        Run it yourself: <code>npx launchgrade 127.0.0.1:8125</code>
+        <p class="fine">Scores are heuristics based on the public HTML and well-known files at scan time. They are not a guarantee of revenue, ranking or accessibility compliance. Re-scan after changes; the internet is not static.</p>
+      </div>
+      <div>
+        <a href="https://github.com/fastpresspages/launchgrade">GitHub</a> ·
+        <a href="https://fastpresspages.github.io/launchgrade/">Website</a> ·
+        <a href="https://github.com/fastpresspages/launchgrade/issues">Report an issue</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

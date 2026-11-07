@@ -1,0 +1,46 @@
+{
+  "name": "contextpack",
+  "version": "0.1.0",
+  "description": "Zero-dependency CLI, library, and stdio MCP server for packing codebases into token-budgeted, LLM-ready context.",
+  "type": "module",
+  "main": "./src/index.js",
+  "bin": {
+    "contextpack": "./bin/contextpack.js",
+    "contextpack-mcp": "./bin/contextpack-mcp.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "mcp": "node bin/contextpack-mcp.js"
+  },
+  "keywords": [
+    "context",
+    "llm",
+    "codebase",
+    "pack",
+    "prompt",
+    "tokens",
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "claude",
+    "gpt",
+    "xml",
+    "tree",
+    "git-diff",
+    "zero-dependency",
+    "fastpress-labs"
+  ],
+  "author": "FastPress Labs (https://github.com/fastpresspages)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastpresspages/contextpack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fastpresspages/contextpack/issues"
+  },
+  "homepage": "https://fastpresspages.github.io/contextpack/",
+  "engines": {
+    "node": ">=18.17"
+  }
+}

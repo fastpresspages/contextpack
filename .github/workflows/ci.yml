@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: contextpack-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18, 20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Verify zero runtime dependencies
+        run: |
+          node -e "const pkg = require('./package.json'); if (pkg.dependencies && Object.keys(pkg.dependencies).length > 0) { console.error('Dependencies detected: runtime dependencies are strictly prohibited'); process.exit(1); } console.log('Zero runtime dependencies confirmed');"
+
+      - name: Run test suite
+        run: node --test test/*.test.js
+
+      - name: CLI smoke test
+        run: |
+          node bin/contextpack.js --help
+          node bin/contextpack.js --version
+          node bin/contextpack.js . --tokens-only
+          node bin/contextpack.js . --tree-only

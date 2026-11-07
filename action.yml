@@ -1,0 +1,107 @@
+name: 'ContextPack'
+description: 'Pack codebases into token-budgeted, LLM-ready context (XML, Markdown, llms.txt) with zero dependencies.'
+author: 'FastPress Labs'
+branding:
+  icon: 'package'
+  color: 'purple'
+
+inputs:
+  path:
+    description: 'Path or directory to pack'
+    required: false
+    default: '.'
+  format:
+    description: 'Output format: xml, markdown, llms, or json'
+    required: false
+    default: 'xml'
+  max-tokens:
+    description: 'Maximum token budget (e.g., 32k, 64k, 100000)'
+    required: false
+    default: ''
+  out:
+    description: 'Output file path (e.g., context.xml or context.md)'
+    required: false
+    default: 'contextpack-output.xml'
+  include:
+    description: 'Comma-separated glob or file patterns to include'
+    required: false
+    default: ''
+  exclude:
+    description: 'Comma-separated glob or file patterns to exclude'
+    required: false
+    default: ''
+  with-tree:
+    description: 'Include visual directory tree'
+    required: false
+    default: 'true'
+  git-diff:
+    description: 'Include git diff in output context'
+    required: false
+    default: 'false'
+
+outputs:
+  tokens:
+    description: 'Total estimated tokens in the context pack'
+    value: ${{ steps.pack.outputs.tokens }}
+  files:
+    description: 'Total files included in the context pack'
+    value: ${{ steps.pack.outputs.files }}
+  omitted:
+    description: 'Number of files omitted due to token budget'
+    value: ${{ steps.pack.outputs.omitted }}
+  output-file:
+    description: 'Path to the generated output file'
+    value: ${{ steps.pack.outputs.output-file }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - id: pack
+      name: Run ContextPack
+      shell: bash
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+        INPUT_FORMAT: ${{ inputs.format }}
+        INPUT_MAX_TOKENS: ${{ inputs.max-tokens }}
+        INPUT_OUT: ${{ inputs.out }}
+        INPUT_INCLUDE: ${{ inputs.include }}
+        INPUT_EXCLUDE: ${{ inputs.exclude }}
+        INPUT_WITH_TREE: ${{ inputs.with-tree }}
+        INPUT_GIT_DIFF: ${{ inputs.git-diff }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        args=("$INPUT_PATH" "--out" "$INPUT_OUT" "--format" "$INPUT_FORMAT")
+        if [ -n "$INPUT_MAX_TOKENS" ]; then args+=("--max-tokens" "$INPUT_MAX_TOKENS"); fi
+        if [ -n "$INPUT_INCLUDE" ]; then args+=("--include" "$INPUT_INCLUDE"); fi
+        if [ -n "$INPUT_EXCLUDE" ]; then args+=("--exclude" "$INPUT_EXCLUDE"); fi
+        if [ "$INPUT_WITH_TREE" = "false" ]; then args+=("--no-tree"); fi
+        if [ "$INPUT_GIT_DIFF" = "true" ]; then args+=("--git-diff"); fi
+
+        node "$ACTION_PATH/bin/contextpack.js" "${args[@]}"
+
+        # Parse output metadata
+        node -e "
+          const fs = require('fs');
+          const outFile = process.env.INPUT_OUT;
+          const stat = fs.statSync(outFile);
+          const content = fs.readFileSync(outFile, 'utf8');
+          // Rough token estimation from file size
+          const tokensMatch = content.match(/tokens=\"(\d+)\"/i) || content.match(/total_tokens[:\s]+(\d+)/i);
+          const filesMatch = content.match(/files=\"(\d+)\"/i) || content.match(/total_files[:\s]+(\d+)/i);
+          const omittedMatch = content.match(/omitted=\"(\d+)\"/i) || content.match(/omitted_files[:\s]+(\d+)/i);
+          
+          const tokens = tokensMatch ? tokensMatch[1] : Math.round(stat.size / 3.8);
+          const files = filesMatch ? filesMatch[1] : '0';
+          const omitted = omittedMatch ? omittedMatch[1] : '0';
+
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'tokens=' + tokens + '\n');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'files=' + files + '\n');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'omitted=' + omitted + '\n');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'output-file=' + outFile + '\n');
+        "

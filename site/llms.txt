@@ -1,0 +1,37 @@
+# ContextPack
+
+> ContextPack is a 100% free, zero-runtime-dependency CLI, Node.js library, and Model Context Protocol (MCP) server for packing codebases and Git diffs into token-budgeted, LLM-ready context.
+
+- Canonical URL: https://fastpresspages.github.io/contextpack/
+- GitHub: https://github.com/fastpresspages/contextpack
+- License: Apache-2.0
+- Runtime dependencies: 0
+- Node.js requirement: >= 18.17
+
+## Features
+
+- Formats context into Anthropic XML (<documents><document>), Markdown, or llms-full.txt.
+- Enforces strict token budgets (--max-tokens 32k, 64k, 128k).
+- Integrates ASCII/Unicode directory tree and Git diffs.
+- Stdio MCP server (contextpack-mcp) exposing pack_codebase, get_tree, pack_diff, and estimate_tokens.
+- Composite GitHub Action for automated CI packing.
+
+## Quick CLI Usage
+
+- `npx -p github:fastpresspages/contextpack contextpack .`
+- `npx -p github:fastpresspages/contextpack contextpack src/ -f markdown -t 32k -o prompt.md`
+- `npx -p github:fastpresspages/contextpack contextpack . --tree-only`
+- `npx -p github:fastpresspages/contextpack contextpack . --tokens-only`
+
+## MCP Server Setup
+
+Command: `npx -y -p github:fastpresspages/contextpack contextpack-mcp`
+
+Tools:
+- pack_codebase: Pack directory into token-capped context
+- get_tree: Generate directory tree with sizes and token estimates
+- pack_diff: Pack staged or branch Git diffs
+- estimate_tokens: Fast BPE token count approximation
+
+## Maintainer
+FastPress Labs (meetcode99@gmail.com). Free forever, zero telemetry, no paid APIs.
